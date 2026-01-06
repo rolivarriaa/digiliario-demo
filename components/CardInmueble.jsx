@@ -43,7 +43,7 @@ export default function CardInmueble({ inmueble }) {
 
   return (
     <div className="cursor-pointer">
-      <div className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.67rem)] xl:w-[380px] rounded-md overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+      <div className="w-full sm:w-[calc(50%-0.5rem)] md:w-[calc(33.333%-0.67rem)] lg:w-[calc(25%-0.75rem)] xl:w-[calc(25%-0.75rem)] max-w-[345px] rounded-md overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
         <ImageSlider
           imagenes={inmueble.imagenes}
           slug={inmueble.slug}

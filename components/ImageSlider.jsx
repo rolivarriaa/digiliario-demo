@@ -68,7 +68,7 @@ function ImageSlider({
         </div>
 
         <div
-          className="relative w-full h-[220px] sm:h-[200px] lg:h-[180px] xl:h-[170px] rounded-t-lg overflow-hidden cursor-pointer"
+          className="relative w-full h-[200px] rounded-t-lg overflow-hidden cursor-pointer"
           onClick={() => handleDetail(slug)}
         >
           <Image
@@ -77,7 +77,7 @@ function ImageSlider({
             layout="fill"
             className="object-cover object-center transition-all duration-300 ease-in-out group-hover:scale-110"
             loading="lazy"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 345px"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
         </div>
       </div>
