@@ -96,7 +96,7 @@ export default function Propiedades() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="max-w-screen-2xl m-auto min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
           <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-red-500 mx-auto mb-4"></div>
           <p className="text-gray-600 font-semibold">Cargando propiedades...</p>
@@ -106,7 +106,7 @@ export default function Propiedades() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className=" m-auto min-h-screen bg-gray-50">
       <Head>
         <title>Digiliario : Propiedades</title>
         <meta
@@ -118,7 +118,7 @@ export default function Propiedades() {
 
       <HeaderFiltros />
 
-      <main className=" mx-auto px-4 mt-2 ">
+      <main className="max-w-fit m-auto mx-auto px-4 mt-2 ">
         <div>
           <div className="flex gap-3 mt-5 flex-col md:flex-row mx-auto content-center center justify-start">
             <SelectOperacion
