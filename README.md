@@ -1,34 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🏡 Digiliario – Demo App
 
-## Getting Started
+**Digiliario Demo App** es una aplicación de demostración enfocada en la **búsqueda y visualización de inmuebles**, diseñada para mostrar una experiencia moderna, clara y escalable para plataformas inmobiliarias digitales.
 
-First, run the development server:
+Esta versión utiliza **datos simulados desde un archivo JSON**, lo que permite demostrar la lógica de búsqueda, filtrado y navegación sin depender de un backend.
 
-```bash
+---
+
+## 🚀 Funcionalidades
+
+### 🔍 Búsqueda de Inmuebles
+
+- Listado de propiedades cargadas desde un archivo JSON
+- Visualización en formato de tarjetas
+- Búsqueda dinámica entre inmuebles
+
+### 🏠 Detalle de Inmueble
+
+- Vista individual de cada propiedad
+- Información completa del inmueble
+- Galería de imágenes
+- Descripción detallada
+
+### 🎯 Filtros
+
+- Filtrado por:
+  - Tipo de inmueble
+  - Rango de precios
+  - Ubicación
+  - Habitaciones y baños
+- Resultados actualizados en tiempo real
+
+---
+
+## 🧩 Fuente de Datos
+
+- Datos obtenidos desde un **archivo JSON local**
+- Información **simulada** con fines demostrativos
+- No existe conexión a base de datos ni API externa
+
+---
+
+## 🛠️ Tecnologías
+
+- Frontend: JavaScript / React / Next.js
+- Estilos: TailwindCSS
+- Manejo de datos: JSON local
+- Entorno de desarrollo: Node.js
+
+---
+
+## 🛠️ Instalación
+
+git clone https://github.com/rolivarriaa/digiliario-demo.git
+cd digiliario-demo
+npm install
 npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
