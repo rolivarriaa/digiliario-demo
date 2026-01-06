@@ -62,15 +62,15 @@ function SolicitarInformaciónComponent({
         modalDetalleMobile ? "" : "rounded-lg shadow-md border-2"
       } p-6  border-gray-100`}
     >
-      <div className="flex items-center flex-col ">
+      <div className="flex flex-col items-center ">
         {showCompleted === false ? (
-          <div className="m-auto mx-auto justify-center mt-2 w-full">
-            <div className="flex items-center gap-4 pb-4  justify-center">
+          <div className="justify-center w-full m-auto mx-auto mt-2">
+            <div className="flex items-center justify-center gap-4 pb-4">
               <FaHome className="text-red-digiliario" />
               <h1 className="font-gilmerBold ">Solicitar Información</h1>
             </div>
             <form onSubmit={formik.handleSubmit} className="m-auto">
-              <div className="flex m-auto items-center bg-white border-2 border-gray-300 rounded-lg px-3 py-2 w-full mt-2 text-red-digiliario">
+              <div className="flex items-center w-full px-3 py-2 m-auto mt-2 bg-white border-2 border-gray-300 rounded-lg text-red-digiliario">
                 <FaUser size={15} className="ml-2 mr-2 text-red-digiliario" />
                 <input
                   id="name"
@@ -78,7 +78,7 @@ function SolicitarInformaciónComponent({
                   type="text"
                   placeholder="Nombre completo"
                   size={30}
-                  className="outline-none text-sm text-black-digiliario font-gilmerBold"
+                  className="text-sm outline-none text-black-digiliario font-gilmerBold"
                   value={formik.values.name}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -88,8 +88,8 @@ function SolicitarInformaciónComponent({
                 {formik.errors.name && <span>{formik.errors.name}</span>}
               </p>
 
-              <div className="flex m-auto items-center bg-white border-2 border-gray-300 rounded-lg mt-4 px-3 py-2 w-full  text-red-digiliario">
-                <FaPhone size={15} className="ml-2 mr-2  text-red-digiliario" />
+              <div className="flex items-center w-full px-3 py-2 m-auto mt-4 bg-white border-2 border-gray-300 rounded-lg text-red-digiliario">
+                <FaPhone size={15} className="ml-2 mr-2 text-red-digiliario" />
 
                 <InputMask
                   mask="99 (+999) 999 9999"
@@ -98,7 +98,7 @@ function SolicitarInformaciónComponent({
                   type="text"
                   placeholder="Telefono / WhatsApp"
                   size={30}
-                  className="outline-none text-sm  text-black-digiliario font-gilmerBold"
+                  className="text-sm outline-none text-black-digiliario font-gilmerBold"
                   value={formik.values.phone}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -107,20 +107,20 @@ function SolicitarInformaciónComponent({
               <p className="text-sm text-red-digiliario">
                 {formik.errors.phone && <span>{formik.errors.phone}</span>}
               </p>
-              <p className="hidden md:block text-xs font-gilmerBold mt-2 text-black-digiliario">
+              <p className="hidden mt-2 text-xs md:block font-gilmerBold text-black-digiliario">
                 Es importante agregar el Código de país, para México es el 52.
               </p>
-              <div className="flex m-auto items-center bg-white border-2 border-gray-300 rounded-lg mt-4 px-3 py-2 w-full  text-red-digiliario">
+              <div className="flex items-center w-full px-3 py-2 m-auto mt-4 bg-white border-2 border-gray-300 rounded-lg text-red-digiliario">
                 <FaEnvelope
                   size={15}
-                  className="  ml-2 mr-2  text-red-digiliario "
+                  className="ml-2 mr-2 text-red-digiliario"
                 />
                 <input
                   id="email"
                   name="email"
                   placeholder="Correo electrónico"
                   size={30}
-                  className="outline-none text-sm  text-black-digiliario font-gilmerBold"
+                  className="text-sm outline-none text-black-digiliario font-gilmerBold"
                   value={formik.values.email}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -129,19 +129,16 @@ function SolicitarInformaciónComponent({
               <p className="text-sm text-red-digiliario">
                 {formik.errors.email && <span>{formik.errors.email}</span>}
               </p>
-              <p className="text-sm font-gilmerBold mt-2 font-bold pt-3 text-center md:text-center  ">
+              <p className="pt-3 mt-2 text-sm font-bold text-center font-gilmerBold md:text-center ">
                 Mejor momento para contactar?{" "}
               </p>
-              <div className="flex m-auto items-center bg-white border-2 border-gray-300 rounded-lg mt-2 px-3 py-2 w-full  text-red-digiliario">
-                <FaClock
-                  size={15}
-                  className=" text-red-digiliario ml-2 mr-2 "
-                />
+              <div className="flex items-center w-full px-3 py-2 m-auto mt-2 bg-white border-2 border-gray-300 rounded-lg text-red-digiliario">
+                <FaClock size={15} className="ml-2 mr-2 text-red-digiliario" />
 
                 <select
                   id="contacttime"
                   name="contacttime"
-                  className="w-full h-5 text-sm  "
+                  className="w-full h-5 text-sm "
                   value={formik.values.contacttime}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -156,16 +153,16 @@ function SolicitarInformaciónComponent({
                   <span>{formik.errors.contacttime}</span>
                 )}
               </p>
-              <p className="text-sm font-gilmerBold mt-4 pt-3 text-left ">
+              <p className="pt-3 mt-4 text-sm text-left font-gilmerBold ">
                 Tu mensaje{" "}
               </p>
-              <div className="flex m-auto items-center bg-white border-2 border-gray-300 rounded-lg p-3 mt-4 mb-2 w-full ">
+              <div className="flex items-center w-full p-3 m-auto mt-4 mb-2 bg-white border-2 border-gray-300 rounded-lg ">
                 <textarea
                   id="message"
                   name="message"
                   rows={5}
                   cols={45}
-                  className="outline-none text-sm  text-black-digiliario font-gilmerBold"
+                  className="text-sm outline-none text-black-digiliario font-gilmerBold"
                   value={formik.values.message}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
@@ -203,7 +200,7 @@ function SolicitarInformaciónComponent({
         ) : (
           <div className="m-auto mx-auto justify-center mt-2 w-full h-[300px] flex flex-col">
             <div className="flex flex-col items-center justify-center">
-              <h3 className="font-gilmerBold  text-xl text-red-digiliario">
+              <h3 className="text-xl font-gilmerBold text-red-digiliario">
                 Mensaje enviado
               </h3>
               <p className="text-center">

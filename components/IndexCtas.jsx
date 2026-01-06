@@ -5,8 +5,8 @@ import React from "react";
 function IndexCtas() {
   return (
     <>
-      <div className="max-w-7xl bg-white">
-        <div className="flex flex-col md:grid md:grid-cols-3 justify-center text-center">
+      <div className="bg-white max-w-7xl">
+        <div className="flex flex-col justify-center text-center md:grid md:grid-cols-3">
           <div className="pb-20 md:pb-0">
             <Image src="/digiliario-platforms.svg" width={314} height={180} />
             <div className="mt-8 ">
@@ -23,7 +23,7 @@ function IndexCtas() {
           </div>
           <div className="pb-20 md:pb-0">
             <Image src="/digiliario-brokers.svg" width={314} height={180} />
-            <div className="mt-8  ">
+            <div className="mt-8 ">
               <p className="font-gilmerBold">Red de Brokers Inmobililiarios </p>
             </div>
             <Link href="#">
@@ -37,7 +37,7 @@ function IndexCtas() {
           </div>
           <div className="pb-20 md:pb-0">
             <Image src="/digiliario-buildings.svg" width={314} height={180} />
-            <div className="mt-8  ">
+            <div className="mt-8 ">
               <p className="font-gilmerBold">Desarrollos Inmobiliarios </p>
             </div>
             <Link href="#">

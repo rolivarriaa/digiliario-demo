@@ -27,20 +27,20 @@ function ImageSlider({
   return (
     <>
       <div className="relative flex items-center">
-        <div className="absolute bottom-2 right-2 bg-white rounded-md px-2 py-1 ">
+        <div className="absolute px-2 py-1 bg-white rounded-md bottom-2 right-2 ">
           <p className="font-gilmerHeavy text-red-digiliario ">
             {precio} {tipoCambio}
           </p>
         </div>
         {/* <div className="absolute top-0">
-          <div className="flex rounded-full bg-white shadow-lg h-8 w-8 items-center cursor-pointer ">
-            <HeartIcon className="h-5 w-5 m-auto hover:text-red-digiliario" />
+          <div className="flex items-center w-8 h-8 bg-white rounded-full shadow-lg cursor-pointer ">
+            <HeartIcon className="w-5 h-5 m-auto hover:text-red-digiliario" />
           </div>
         </div> */}
-        <div className="absolute my-auto w-full flex justify-between">
+        <div className="absolute flex justify-between w-full my-auto">
           {imagenes?.length > 1 ? (
             <div
-              className="ml-2 cursor-pointer flex items-center w-5 h-5 justify-center rounded-full bg-black-digiliario hover:bg-gray-700 "
+              className="flex items-center justify-center w-5 h-5 ml-2 rounded-full cursor-pointer bg-black-digiliario hover:bg-gray-700 "
               onClick={goToPrevious}
             >
               <ArrowLeftRounded className="text-white" />
@@ -51,7 +51,7 @@ function ImageSlider({
 
           {imagenes?.length > 1 ? (
             <div
-              className="mr-2 cursor-pointer flex items-center w-5 h-5 justify-center  rounded-full bg-black-digiliario hover:bg-gray-700"
+              className="flex items-center justify-center w-5 h-5 mr-2 rounded-full cursor-pointer bg-black-digiliario hover:bg-gray-700"
               onClick={goToNext}
             >
               <ArrowRightRounded className="text-white" />

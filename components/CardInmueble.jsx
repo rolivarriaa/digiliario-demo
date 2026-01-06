@@ -55,7 +55,7 @@ export default function CardInmueble({ inmueble }) {
 
         <div className="px-4 py-4" onClick={() => handleDetail(inmueble.slug)}>
           <div className="flex flex-col justify-between">
-            <div className="flex items-center gap-2 justify-start">
+            <div className="flex items-center justify-start gap-2">
               <p className="text-md">
                 <span className="font-gilmerBold">{inmueble.tipo}</span>
                 <span className="font-gilmerBold"> / </span>
@@ -67,14 +67,14 @@ export default function CardInmueble({ inmueble }) {
           </div>
 
           <div className="flex justify-between ">
-            <div className="flex items-center gap-2 justify-start pt-2">
+            <div className="flex items-center justify-start gap-2 pt-2">
               <div
                 className={`flex items-center gap-2 ${
                   inmueble.terreno ? "block" : "hidden"
                 }`}
               >
                 <FaRulerCombined className="text-red-digiliario " />
-                <span className="font-gilmerBold text-sm">
+                <span className="text-sm font-gilmerBold">
                   {inmueble.terreno} {inmueble.unidad_medida_short}
                 </span>
               </div>
@@ -84,20 +84,20 @@ export default function CardInmueble({ inmueble }) {
                 }`}
               >
                 <FaHome className="text-red-digiliario " />
-                <span className="font-gilmerBold text-sm">
+                <span className="text-sm font-gilmerBold">
                   {inmueble.construccion} {inmueble.unidad_medida_short}
                 </span>
               </div>
             </div>
 
-            <div className="flex items-center gap-2 justify-start pt-2">
+            <div className="flex items-center justify-start gap-2 pt-2">
               <div
                 className={`flex items-center gap-2 ${
                   inmueble.habitaciones ? "block" : "hidden"
                 }`}
               >
                 <FaBed className="text-red-digiliario" size={15} />{" "}
-                <p className="font-gilmerBold text-sm">
+                <p className="text-sm font-gilmerBold">
                   {inmueble.habitaciones}
                 </p>
               </div>
@@ -108,13 +108,13 @@ export default function CardInmueble({ inmueble }) {
                 }`}
               >
                 <FaBath className="text-red-digiliario" size={13} />{" "}
-                <p className="font-gilmerBold text-sm">{inmueble.banos}</p>
+                <p className="text-sm font-gilmerBold">{inmueble.banos}</p>
               </div>
 
               {inmueble.autos != null ? (
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2">
                   <FaCar className="text-red-digiliario " />
-                  <span className="font-gilmerBold text-sm">
+                  <span className="text-sm font-gilmerBold">
                     {inmueble.autos}
                   </span>
                 </div>
@@ -122,12 +122,12 @@ export default function CardInmueble({ inmueble }) {
             </div>
           </div>
 
-          <hr className="w-full m-auto border border-gray-100 my-2" />
+          <hr className="w-full m-auto my-2 border border-gray-100" />
 
           <div>
             <div className="flex items-center justify-star">
-              <FaMapMarkerAlt className="h-3 w-3 text-red-digiliario mr-1" />
-              <p className=" font-gilmerBold text-sm">Hermosillo, Sonora</p>
+              <FaMapMarkerAlt className="w-3 h-3 mr-1 text-red-digiliario" />
+              <p className="text-sm font-gilmerBold">Hermosillo, Sonora</p>
             </div>
           </div>
         </div>

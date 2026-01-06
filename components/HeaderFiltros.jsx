@@ -38,55 +38,55 @@ const navigationMobile = [
 const mainMenu = [
   {
     title: "Buscar inmuebles",
-    icon: <SearchIcon className="h-4 w-auto pr-2 text-red-digiliario" />,
+    icon: <SearchIcon className="w-auto h-4 pr-2 text-red-digiliario" />,
     url: "#",
   },
 
   {
     title: "Desarrollos",
     icon: (
-      <OfficeBuildingIcon className="h-4 w-auto pr-2 text-red-digiliario" />
+      <OfficeBuildingIcon className="w-auto h-4 pr-2 text-red-digiliario" />
     ),
     url: "#",
   },
   {
     title: "Notarías",
     icon: (
-      <OfficeBuildingIcon className="h-4 w-auto pr-2 text-red-digiliario" />
+      <OfficeBuildingIcon className="w-auto h-4 pr-2 text-red-digiliario" />
     ),
     url: "#",
   },
   {
     title: "Brokers Hipotecarios",
     icon: (
-      <PersonOutlineOutlined className="h-4 w-auto pr-2 text-red-digiliario" />
+      <PersonOutlineOutlined className="w-auto h-4 pr-2 text-red-digiliario" />
     ),
     url: "#",
   },
   {
     title: "Inventario",
-    icon: <HomeIcon className="h-4 w-auto pr-2 text-red-digiliario" />,
+    icon: <HomeIcon className="w-auto h-4 pr-2 text-red-digiliario" />,
     url: "#",
   },
   {
     title: "Leads",
-    icon: <UsersIcon className="h-4 w-auto pr-2  text-red-digiliario" />,
+    icon: <UsersIcon className="w-auto h-4 pr-2 text-red-digiliario" />,
     url: "#",
   },
   {
     title: "Suscripción",
-    icon: <CreditCard className="h-4 w-auto pr-2  text-red-digiliario" />,
+    icon: <CreditCard className="w-auto h-4 pr-2 text-red-digiliario" />,
     url: "#",
   },
   {
     title: "Configuraciones",
-    icon: <CogIcon className="h-4 w-auto pr-2  text-red-digiliario " />,
+    icon: <CogIcon className="w-auto h-4 pr-2 text-red-digiliario " />,
     url: "#",
   },
   {
     title: "Cerrar sesión",
     item: "logout",
-    icon: <Logout className="h-4 w-auto pr-2  text-red-digiliario" />,
+    icon: <Logout className="w-auto h-4 pr-2 text-red-digiliario" />,
     url: "#",
   },
 ];
@@ -97,23 +97,23 @@ function classNames(...classes) {
 
 function HeaderFiltros() {
   return (
-    <Disclosure as="nav" className="sticky top-0 z-50 shadow-md bg-white ">
+    <Disclosure as="nav" className="sticky top-0 z-50 bg-white shadow-md ">
       {({ open }) => (
         <>
-          <div className="max-w-screen-3xl mx-auto px-4 ">
+          <div className="px-4 mx-auto max-w-screen-3xl ">
             <div className="relative flex items-center justify-between h-16">
               {/* Mobile menu bar */}
-              <div className="absolute right-0 md:left-0 items-center md:hidden  ">
+              <div className="absolute right-0 items-center md:left-0 md:hidden ">
                 {/* Mobile menu button*/}
-                <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white  focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ">
+                <Disclosure.Button className="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white ">
                   {open ? (
                     <XIcon
-                      className="block h-6 w-6 text-red-digiliario"
+                      className="block w-6 h-6 text-red-digiliario"
                       aria-hidden="true"
                     />
                   ) : (
                     <MenuIcon
-                      className="block h-6 w-6 text-red-digiliario hover:text-black-digiliario"
+                      className="block w-6 h-6 text-red-digiliario hover:text-black-digiliario"
                       aria-hidden="true"
                     />
                   )}
@@ -121,35 +121,35 @@ function HeaderFiltros() {
               </div>
               {/*  End Mobile menu bar */}
 
-              <div className="md:flex-1 flex items-center left-0 justify-center sm:items-stretch sm:justify-start ">
-                <div className="md:flex flex-shrink-0 items-center cursor-pointer">
+              <div className="left-0 flex items-center justify-center md:flex-1 sm:items-stretch sm:justify-start ">
+                <div className="items-center flex-shrink-0 cursor-pointer md:flex">
                   <Link href="/propiedades">
                     <img
-                      className=" md:block h-10 w-auto pr-3"
+                      className="w-auto h-10 pr-3 md:block"
                       src="/digiliario-logo.svg"
                       alt="digilirio"
                     />
                   </Link>
                 </div>
 
-                {/* <div className="md:hidden flex-shrink-0 flex items-center">
+                {/* <div className="flex items-center flex-shrink-0 md:hidden">
                   <img
-                    className="block h-8 w-auto pr-3"
+                    className="block w-auto h-8 pr-3"
                     src="/digiliario-logo-icon.svg"
                     alt="digilirio"
                   />
                 </div> */}
 
                 <div className="flex items-center ">
-                  <div className="md:flex space-x-2 items-center hidden   ">
-                    <div className="flex text-sm font-gilmerBold border-2 border-gray-300 rounded-lg ">
+                  <div className="items-center hidden space-x-2 md:flex ">
+                    <div className="flex text-sm border-2 border-gray-300 rounded-lg font-gilmerBold ">
                       <input
                         placeholder="Búsqueda de inmueble por tipo, ciudad, colonia, código postal..."
                         className="outline-hidden outline-none placeholder:text-gray-500 px-3 py-2 bg-transparent md:min-w-[550px] lg:max-w-[350px]  "
                       ></input>
                     </div>
                   </div>
-                  <div className="ml-2 hidden md:hidden lg:block ">
+                  <div className="hidden ml-2 md:hidden lg:block ">
                     {navigation.map((item) => (
                       <a
                         key={item.name}
@@ -164,7 +164,7 @@ function HeaderFiltros() {
                     ))}
                   </div>
 
-                  <div className="ml-2 hidden md:hidden lg:block">
+                  <div className="hidden ml-2 md:hidden lg:block">
                     <Link href="/propiedades">
                       <a
                         target="_blank"
@@ -180,13 +180,13 @@ function HeaderFiltros() {
               </div>
 
               {/* Profile dropdown */}
-              <div className="absolute inset-y-0 right-0 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 hidden md:flex ">
+              <div className="absolute inset-y-0 right-0 items-center hidden pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 md:flex ">
                 <Menu as="div" className="relative">
                   <span className="sr-only">Open Menu</span>
-                  <div className=" flex gap-2 items-center">
+                  <div className="flex items-center gap-2 ">
                     <UserCircleIcon className="w-7 text-red-digiliario " />
 
-                    <Menu.Button className=" flex text-md rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white  focus:ring-white">
+                    <Menu.Button className="flex rounded-full text-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white focus:ring-white">
                       <AiOutlineMenu
                         size={20}
                         className="text-red-digiliario"
@@ -202,7 +202,7 @@ function HeaderFiltros() {
                     leaveFrom="transform opacity-100 scale-100"
                     leaveTo="transform opacity-0 scale-95"
                   >
-                    <Menu.Items className="origin-top-right absolute right-0 mt-6 w-56 rounded-md shadow-lg py-1 bg-white ring-1 ring-black-digiliario ring-opacity-5 focus:outline-none">
+                    <Menu.Items className="absolute right-0 w-56 py-1 mt-6 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black-digiliario ring-opacity-5 focus:outline-none">
                       {mainMenu.map(({ title, icon, url, item }, index) => (
                         <div key={index}>
                           {item == "logout" ? (
@@ -239,9 +239,9 @@ function HeaderFiltros() {
           </div>
           {/* Menu mobile */}
 
-          <Disclosure.Panel className="sm:hidden absolute w-full ">
+          <Disclosure.Panel className="absolute w-full sm:hidden ">
             <div className="px-2 pt-4 pb-8 space-y-1 bg-black-digiliario ">
-              <Disclosure.Button className="m-auto mt-4 mb-4 text-center content-center">
+              <Disclosure.Button className="content-center m-auto mt-4 mb-4 text-center">
                 <Link href="login">
                   <a
                     key="login"
@@ -252,18 +252,18 @@ function HeaderFiltros() {
                 </Link>
               </Disclosure.Button>
 
-              <a className="text-white bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-sm font-gilmerMedium pt-4">
+              <a className="block px-3 py-2 pt-4 text-sm text-white bg-gray-700 rounded-md hover:text-white font-gilmerMedium">
                 Bienvenido
                 <div className="flex items-center pt-2 pb-6 ">
-                  <div className="pr-4 flex items-center">
-                    <label className="btn btn-ghost btn-circle avatar border-2 shadow-md rounded-full border-white">
+                  <div className="flex items-center pr-4">
+                    <label className="border-2 border-white rounded-full shadow-md btn btn-ghost btn-circle avatar">
                       <div className="w-20 rounded-full">
                         <UserCircleIcon className="w-7 text-red-digiliario " />
                       </div>
                     </label>
                   </div>
                   <div className="flex flex-col ">
-                    <span className="font-gilmerBold text-lg">
+                    <span className="text-lg font-gilmerBold">
                       Usuario invitado
                     </span>
                     <span className="text-sm"> demo@digiliario.com</span>
@@ -291,7 +291,7 @@ function HeaderFiltros() {
                 </Disclosure.Button>
               ))}
               <div className="pt-4"></div>
-              <Disclosure.Button className="m-auto text-center content-center">
+              <Disclosure.Button className="content-center m-auto text-center">
                 <Link href="planes">
                   <a
                     key="planes"
@@ -302,7 +302,7 @@ function HeaderFiltros() {
                 </Link>
               </Disclosure.Button>
               <div className="pt-4"></div>
-              <Disclosure.Button className="m-auto text-center content-center">
+              <Disclosure.Button className="content-center m-auto text-center">
                 <Link href="planes">
                   <a
                     key="planes"
