@@ -1,8 +1,21 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import {
+  FaBath,
+  FaBed,
+  FaCar,
+  FaHome,
+  FaMapMarkerAlt,
+  FaRulerCombined,
+} from "react-icons/fa";
+import ImageSlider from "./ImageSlider";
+import { useDigiliarioContext } from "../context/digiliarioContext";
 
 export default function CardInmueble({ inmueble }) {
   const router = useRouter();
+
+  const { selectedInmuebleDetalle, setSelectedInmuebleDetalle } =
+    useDigiliarioContext();
 
   const {
     imagenes,
@@ -17,60 +30,105 @@ export default function CardInmueble({ inmueble }) {
     codigo,
   } = inmueble || {};
 
-  const handleClick = () => {
-    if (codigo) {
-      router.push(`/propiedades/${codigo}`);
-    }
-  };
-
   const formatPrice = (price) => {
     if (!price) return "Consultar";
     return new Intl.NumberFormat("es-AR").format(price);
   };
 
+  const handleDetail = (value) => {
+    setSelectedInmuebleDetalle(inmueble);
+
+    router.push(`/propiedades/detalle/${value}`);
+  };
+
   return (
-    <div
-      onClick={handleClick}
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-all cursor-pointer transform hover:-translate-y-1"
-    >
-      <div className="relative h-48 md:h-56">
-        <img
-          src={imagenes[0].url || "/placeholder.jpg"}
-          alt={titulo}
-          className="w-full h-full object-cover"
+    <div className="cursor-pointer">
+      <div className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.67rem)] xl:w-[380px] rounded-md overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+        <ImageSlider
+          imagenes={inmueble.imagenes}
+          slug={inmueble.slug}
+          handleDetail={handleDetail}
+          precio={inmueble.precio}
+          tipoCambio={inmueble.tipo_cambio_short}
         />
-        {inmuebles_tipos_nombre && (
-          <span className="absolute top-2 right-2 bg-red-digiliario text-white px-3 py-1 rounded-full text-sm font-gilmerBold">
-            {inmuebles_tipos_nombre}
-          </span>
-        )}
-      </div>
 
-      <div className="p-4">
-        <div className="flex items-baseline gap-2 mb-2">
-          <span className="text-xl font-gilmerBold text-red-digiliario">
-            {tipo_cambio_short} {formatPrice(precio)}
-          </span>
-        </div>
+        <div className="px-4 py-4" onClick={() => handleDetail(inmueble.slug)}>
+          <div className="flex flex-col justify-between">
+            <div className="flex items-center gap-2 justify-start">
+              <p className="text-md">
+                <span className="font-gilmerBold">{inmueble.tipo}</span>
+                <span className="font-gilmerBold"> / </span>
+                <span className="font-gilmerBold text-red-digiliario">
+                  {inmueble.operacion}
+                </span>
+              </p>
+            </div>
+          </div>
 
-        <h3 className="text-gray-900 font-gilmerBold text-lg mb-1 line-clamp-1">
-          {titulo}
-        </h3>
+          <div className="flex justify-between ">
+            <div className="flex items-center gap-2 justify-start pt-2">
+              <div
+                className={`flex items-center gap-2 ${
+                  inmueble.terreno ? "block" : "hidden"
+                }`}
+              >
+                <FaRulerCombined className="text-red-digiliario " />
+                <span className="font-gilmerBold text-sm">
+                  {inmueble.terreno} {inmueble.unidad_medida_short}
+                </span>
+              </div>
+              <div
+                className={`flex items-center gap-2 ${
+                  inmueble.construccion ? "block" : "hidden"
+                }`}
+              >
+                <FaHome className="text-red-digiliario " />
+                <span className="font-gilmerBold text-sm">
+                  {inmueble.construccion} {inmueble.unidad_medida_short}
+                </span>
+              </div>
+            </div>
 
-        <p className="text-gray-600 text-sm mb-3 font-gilmerMedium line-clamp-1">
-          📍 {direccion}
-        </p>
+            <div className="flex items-center gap-2 justify-start pt-2">
+              <div
+                className={`flex items-center gap-2 ${
+                  inmueble.habitaciones ? "block" : "hidden"
+                }`}
+              >
+                <FaBed className="text-red-digiliario" size={15} />{" "}
+                <p className="font-gilmerBold text-sm">
+                  {inmueble.habitaciones}
+                </p>
+              </div>
 
-        <div className="flex gap-4 text-sm text-gray-600 font-gilmerMedium">
-          {habitaciones && (
-            <span className="flex items-center gap-1">🛏️ {habitaciones}</span>
-          )}
-          {banos && <span className="flex items-center gap-1">🚿 {banos}</span>}
-          {superficie_total && (
-            <span className="flex items-center gap-1">
-              📏 {superficie_total} m²
-            </span>
-          )}
+              <div
+                className={`flex items-center gap-2 ${
+                  inmueble.banos ? "block" : "hidden"
+                }`}
+              >
+                <FaBath className="text-red-digiliario" size={13} />{" "}
+                <p className="font-gilmerBold text-sm">{inmueble.banos}</p>
+              </div>
+
+              {inmueble.autos != null ? (
+                <div className="flex gap-2 items-center">
+                  <FaCar className="text-red-digiliario " />
+                  <span className="font-gilmerBold text-sm">
+                    {inmueble.autos}
+                  </span>
+                </div>
+              ) : null}
+            </div>
+          </div>
+
+          <hr className="w-full m-auto border border-gray-100 my-2" />
+
+          <div>
+            <div className="flex items-center justify-star">
+              <FaMapMarkerAlt className="h-3 w-3 text-red-digiliario mr-1" />
+              <p className=" font-gilmerBold text-sm">Hermosillo, Sonora</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

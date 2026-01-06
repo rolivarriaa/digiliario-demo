@@ -118,8 +118,8 @@ export default function Propiedades() {
 
       <HeaderFiltros />
 
-      <main>
-        <div className="max-w-[1600px] mx-auto px-4 mt-2">
+      <main className=" mx-auto px-4 mt-2 ">
+        <div>
           <div className="flex gap-3 mt-5 flex-col md:flex-row mx-auto content-center center justify-start">
             <SelectOperacion
               value={filters.operacion}

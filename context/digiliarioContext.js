@@ -7,6 +7,8 @@ export function DigiliarioProvider({ children }) {
   const [inmueblesListaFiltered, setInmueblesListaFiltered] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [selectedInmuebleDetalle, setSelectedInmuebleDetalle] = useState({});
+
   useEffect(() => {
     // Cargar datos desde inmuebles.json
     const loadInmuebles = async () => {
@@ -37,6 +39,8 @@ export function DigiliarioProvider({ children }) {
         inmueblesListaFiltered,
         setInmueblesListaFiltered,
         loading,
+        selectedInmuebleDetalle,
+        setSelectedInmuebleDetalle,
       }}
     >
       {children}

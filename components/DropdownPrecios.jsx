@@ -1,100 +1,187 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
+  Box,
+  VStack,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  Text,
+  HStack,
+  RadioGroup,
+  Radio,
+} from "@chakra-ui/react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-export default function DropdownPrecios({
+function DropdownPrecios({
   precioMin,
   precioMax,
   onChangePrecioMin,
   onChangePrecioMax,
+  moneda,
   onChangeMoneda,
 }) {
+  const [selectPrecio, setSelectedPrecio] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [moneda, setMoneda] = useState("");
+  const [selectedMoneda, setSelectedMoneda] = useState(moneda || "MXN");
 
-  const handleMonedaChange = (e) => {
-    const value = e.target.value;
-    setMoneda(value);
-    onChangeMoneda(value);
+  const formatCurrency = (value) => {
+    if (!value) return "";
+    return new Intl.NumberFormat("es-MX").format(value);
   };
 
-  const displayText = () => {
-    if (precioMin || precioMax) {
-      const min = precioMin || "0";
-      const max = precioMax || "∞";
-      const currencySymbol =
-        moneda === "USD" ? "$" : moneda === "ARS" ? "$" : "";
-      return `${currencySymbol}${min} - ${currencySymbol}${max}`;
+  const handleMinChange = (e) => {
+    const value = e.target.value.replace(/,/g, "");
+    if (!isNaN(value) || value === "") {
+      onChangePrecioMin(value);
     }
-    return "Precio";
   };
+
+  const handleMaxChange = (e) => {
+    const value = e.target.value.replace(/,/g, "");
+    if (!isNaN(value) || value === "") {
+      onChangePrecioMax(value);
+    }
+  };
+
+  const handleMonedaChange = (value) => {
+    setSelectedMoneda(value);
+    if (onChangeMoneda) {
+      onChangeMoneda(value);
+    }
+  };
+
+  // Actualizar el texto del botón cuando hay valores personalizados
+  useEffect(() => {
+    if (precioMin || precioMax) {
+      const symbol = selectedMoneda === "USD" ? "USD" : "MXN";
+      const minFormatted = precioMin
+        ? `${formatCurrency(precioMin)} ${symbol}`
+        : "";
+      const maxFormatted = precioMax
+        ? `${formatCurrency(precioMax)} ${symbol}`
+        : "";
+
+      if (minFormatted && maxFormatted) {
+        setSelectedPrecio(`Desde $${minFormatted}  - Hasta $${maxFormatted}`);
+      } else if (minFormatted) {
+        setSelectedPrecio(`Desde $${minFormatted}`);
+      } else if (maxFormatted) {
+        setSelectedPrecio(`Hasta $${maxFormatted}`);
+      }
+    } else {
+      setSelectedPrecio("");
+    }
+  }, [precioMin, precioMax, selectedMoneda]);
 
   return (
-    <div className="relative w-full md:w-auto">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full md:min-w-[200px] px-4 py-2.5 text-left bg-white border border-gray-300 rounded-md hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 font-gilmerMedium"
-      >
-        {displayText()}
-      </button>
+    <Box w={{ base: "full", lg: "max-content" }}>
+      <Menu isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <MenuButton
+          as={Button}
+          border="2px"
+          borderColor="gray.300"
+          bg="white"
+          color="black"
+          rounded="lg"
+          fontSize="sm"
+          fontFamily="gilmerBold"
+          fontWeight="bold"
+          _hover={{ bg: "gray.50" }}
+          _active={{ bg: "gray.100" }}
+          w="full"
+          minW={{ base: "full", md: "200px" }}
+          onClick={() => setIsOpen(!isOpen)}
+          rightIcon={isOpen ? <FaChevronUp /> : <FaChevronDown />}
+        >
+          <span className="text-black font-gilmerBold">
+            {selectPrecio ? selectPrecio : "Presupuesto (Precio)"}
+          </span>
+        </MenuButton>
+        <MenuList
+          fontSize="sm"
+          shadow="md"
+          rounded="lg"
+          maxW={{ md: "330px" }}
+          w="full"
+          zIndex={50}
+        >
+          {/* Radio Group para tipo de moneda */}
 
-      {isOpen && (
-        <>
-          <div
-            className="fixed inset-0 z-10"
-            onClick={() => setIsOpen(false)}
-          />
-          <div className="absolute z-20 w-full md:w-80 mt-1 bg-white border border-gray-300 rounded-md shadow-lg p-4">
-            <div className="space-y-3">
-              <div>
-                <label className="block text-sm text-gray-700 mb-1 font-gilmerMedium">
-                  Moneda
-                </label>
-                <select
-                  value={moneda}
-                  onChange={handleMonedaChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 font-gilmerMedium"
-                >
-                  <option value="">Seleccionar moneda</option>
-                  <option value="USD">USD - Dólar</option>
-                  <option value="ARS">ARS - Peso Argentino</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm text-gray-700 mb-1 font-gilmerMedium">
-                  Precio mínimo
-                </label>
-                <input
-                  type="number"
-                  value={precioMin}
-                  onChange={(e) => onChangePrecioMin(e.target.value)}
-                  placeholder="Min"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 font-gilmerMedium"
+          {/* Inputs de precio personalizado */}
+          <Box px={4}>
+            <Text
+              fontSize="sm"
+              fontWeight="bold"
+              mb={3}
+              fontFamily="gilmerBold"
+            >
+              Precio personalizado
+            </Text>
+            <VStack spacing={3} align="stretch">
+              <InputGroup size="sm">
+                <InputLeftElement pointerEvents="none" color="gray.500">
+                  {selectedMoneda === "USD" ? "$" : "$"}
+                </InputLeftElement>
+                <Input
+                  placeholder="Precio mínimo"
+                  value={formatCurrency(precioMin)}
+                  onChange={handleMinChange}
+                  rounded={"md"}
+                  height={"36px"}
+                  type="text"
+                  fontSize="sm"
+                  fontFamily="gilmerBold"
+                  fontWeight="bold"
                 />
-              </div>
-
-              <div>
-                <label className="block text-sm text-gray-700 mb-1 font-gilmerMedium">
-                  Precio máximo
-                </label>
-                <input
-                  type="number"
-                  value={precioMax}
-                  onChange={(e) => onChangePrecioMax(e.target.value)}
-                  placeholder="Max"
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 font-gilmerMedium"
+              </InputGroup>
+              <InputGroup size="sm">
+                <InputLeftElement pointerEvents="none" color="gray.500">
+                  {selectedMoneda === "USD" ? "$" : "$"}
+                </InputLeftElement>
+                <Input
+                  placeholder="Precio máximo"
+                  value={formatCurrency(precioMax)}
+                  onChange={handleMaxChange}
+                  rounded={"md"}
+                  height={"36px"}
+                  type="text"
+                  fontSize="sm"
+                  fontFamily="gilmerBold"
+                  fontWeight="bold"
                 />
-              </div>
+              </InputGroup>
+            </VStack>
+          </Box>
 
-              <button
-                onClick={() => setIsOpen(false)}
-                className="w-full px-4 py-2 bg-red-digiliario text-white rounded-md hover:bg-red-500 font-gilmerBold"
-              >
-                Aplicar
-              </button>
-            </div>
-          </div>
-        </>
-      )}
-    </div>
+          <Box px={4} pt={4} pb={2}>
+            <Text
+              fontSize="sm"
+              fontWeight="bold"
+              mb={2}
+              fontFamily="gilmerBold"
+            >
+              Tipo de moneda
+            </Text>
+            <RadioGroup value={selectedMoneda} onChange={handleMonedaChange}>
+              <HStack spacing={4}>
+                <Radio value="MXN" colorScheme="red">
+                  <p className="text-sm font-gilmerBold">MXN</p>
+                </Radio>
+                <Radio value="USD" colorScheme="red">
+                  <p className="text-sm font-gilmerBold">USD</p>
+                </Radio>
+              </HStack>
+            </RadioGroup>
+          </Box>
+        </MenuList>
+      </Menu>
+    </Box>
   );
 }
+
+export default DropdownPrecios;

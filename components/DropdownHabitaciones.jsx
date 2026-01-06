@@ -1,53 +1,103 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
+import {
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Button,
+  Box,
+} from "@chakra-ui/react";
+import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
 export default function DropdownHabitaciones({ value, onChange }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const opciones = [
-    { value: "1", label: "1+ Habitación" },
-    { value: "2", label: "2+ Habitaciones" },
-    { value: "3", label: "3+ Habitaciones" },
-    { value: "4", label: "4+ Habitaciones" },
-    { value: "5", label: "5+ Habitaciones" },
-  ];
-
-  const handleSelect = (opcion) => {
-    onChange(opcion.value);
-    setIsOpen(false);
+  const inmueble_habitaciones = {
+    error: false,
+    mensaje: "Lista de tipos de habitaciones de inmuebles registradas",
+    habitaciones: [
+      {
+        id: "1",
+        habitaciones: "1 Habitación",
+      },
+      {
+        id: "2",
+        habitaciones: "2 Habitaciones",
+      },
+      {
+        id: "3",
+        habitaciones: "3 ó más Habitaciones",
+      },
+    ],
   };
 
-  const selectedOption = opciones.find((op) => op.value === value);
+  const [selectedHabitaciones, setSelectedHabitaciones] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [inmueblesHabitacionesData, setInmueblesHabitacionesData] = useState(
+    inmueble_habitaciones
+  );
+
+  useEffect(() => {
+    if (value) {
+      const habitacion = inmueblesHabitacionesData.habitaciones.find(
+        (hab) => hab.id === value
+      );
+      setSelectedHabitaciones(habitacion ? habitacion.habitaciones : "");
+    } else {
+      setSelectedHabitaciones("");
+    }
+  }, [value]);
 
   return (
-    <div className="relative w-full md:w-auto">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full md:min-w-[200px] px-4 py-2.5 text-left bg-white border border-gray-300 rounded-md hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 font-gilmerMedium"
-      >
-        {selectedOption ? selectedOption.label : "Habitaciones"}
-      </button>
-
-      {isOpen && (
-        <>
-          <div
-            className="fixed inset-0 z-10"
-            onClick={() => setIsOpen(false)}
-          />
-          <div className="absolute z-20 w-full mt-1 bg-white border border-gray-300 rounded-md shadow-lg">
-            {opciones.map((opcion) => (
-              <button
-                key={opcion.value}
-                onClick={() => handleSelect(opcion)}
-                className={`w-full px-4 py-2 text-left hover:bg-gray-100 first:rounded-t-md last:rounded-b-md font-gilmerMedium ${
-                  value === opcion.value ? "bg-gray-100" : ""
-                }`}
-              >
-                {opcion.label}
-              </button>
-            ))}
-          </div>
-        </>
-      )}
-    </div>
+    <Box w={{ base: "full", lg: "max-content" }}>
+      <Menu isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        <MenuButton
+          as={Button}
+          border="2px"
+          borderColor="gray.300"
+          bg="white"
+          color="black"
+          rounded="lg"
+          fontSize="sm"
+          fontFamily="gilmerBold"
+          fontWeight="bold"
+          _hover={{ bg: "gray.50" }}
+          _active={{ bg: "gray.100" }}
+          w="full"
+          minW="180px"
+          onClick={() => setIsOpen(!isOpen)}
+          rightIcon={isOpen ? <FaChevronUp /> : <FaChevronDown />}
+        >
+          <span className="text-black font-gilmerBold">
+            {selectedHabitaciones ? selectedHabitaciones : "Habitaciones"}
+          </span>
+        </MenuButton>
+        <MenuList
+          fontSize="sm"
+          shadow="md"
+          rounded="lg"
+          maxW={{ md: "230px" }}
+          w="full"
+          zIndex={50}
+        >
+          {inmueblesHabitacionesData?.habitaciones?.map((habitacion) => (
+            <MenuItem
+              key={habitacion.id}
+              onClick={() => {
+                onChange(habitacion.id);
+                setIsOpen(false);
+              }}
+              _hover={{
+                bg: "gray.50",
+                fontWeight: "bold",
+                color: "red.500",
+              }}
+              fontFamily="gilmerBold"
+              fontWeight="bold"
+            >
+              {habitacion.habitaciones}
+            </MenuItem>
+          ))}
+        </MenuList>
+      </Menu>
+    </Box>
   );
 }
