@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Gilmer Bold";
+  src: url("/assets/fonts/gilmer-bold.woff2") format("woff2"),
+    url("/assets/fonts/gilmer-bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilmer Regular";
+  src: url("/assets/fonts/gilmer-regular.woff2") format("woff2"),
+    url("/assets/fonts/gilmer-regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilmer Medium";
+  src: url("/assets/fonts/gilmer-medium.woff2") format("woff2"),
+    url("/assets/fonts/gilmer-medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilmer Heavy";
+  src: url("/assets/fonts/gilmer-heavy.woff2") format("woff2"),
+    url("/assets/fonts/gilmer-heavy.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

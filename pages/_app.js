@@ -5,6 +5,7 @@ import { extendTheme } from "@chakra-ui/react";
 import ProgressBar from "@badrap/bar-of-progress";
 import Router from "next/router";
 import { DigiliarioProvider } from "../context/digiliarioContext";
+import Head from "next/head";
 
 const variantOutlined = () => ({
   field: {
@@ -85,13 +86,45 @@ Router.events.on("routeChangeError", progress.finish);
 
 function MyApp({ Component, pageProps }) {
   return (
-    <DigiliarioProvider>
-      <ThemeProvider>
-        <ChakraProvider theme={theme}>
-          <Component {...pageProps} />
-        </ChakraProvider>
-      </ThemeProvider>
-    </DigiliarioProvider>
+    <>
+      <Head>
+        <link
+          rel="preload"
+          href="/assets/fonts/gilmer-bold.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/gilmer-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/gilmer-medium.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/assets/fonts/gilmer-heavy.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </Head>
+      <DigiliarioProvider>
+        <ThemeProvider>
+          <ChakraProvider theme={theme}>
+            <Component {...pageProps} />
+          </ChakraProvider>
+        </ThemeProvider>
+      </DigiliarioProvider>
+    </>
   );
 }
 
