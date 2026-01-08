@@ -27,20 +27,10 @@ function ImageSlider({
   return (
     <>
       <div className="relative flex items-center">
-        <div className="absolute px-2 py-1 bg-white rounded-md bottom-2 right-2 ">
-          <p className="font-gilmerHeavy text-red-digiliario ">
-            {precio} {tipoCambio}
-          </p>
-        </div>
-        {/* <div className="absolute top-0">
-          <div className="flex items-center w-8 h-8 bg-white rounded-full shadow-lg cursor-pointer ">
-            <HeartIcon className="w-5 h-5 m-auto hover:text-red-digiliario" />
-          </div>
-        </div> */}
         <div className="absolute flex justify-between w-full my-auto">
           {imagenes?.length > 1 ? (
             <div
-              className="flex items-center justify-center w-5 h-5 ml-2 rounded-full cursor-pointer bg-black-digiliario hover:bg-gray-700 "
+              className="flex items-center justify-center w-10 h-10 ml-2 rounded-full cursor-pointer bg-black-digiliario hover:bg-gray-700 "
               onClick={goToPrevious}
             >
               <ArrowLeftRounded className="text-white" />
@@ -51,7 +41,7 @@ function ImageSlider({
 
           {imagenes?.length > 1 ? (
             <div
-              className="flex items-center justify-center w-5 h-5 mr-2 rounded-full cursor-pointer bg-black-digiliario hover:bg-gray-700"
+              className="flex items-center justify-center w-10 h-10 mr-2 rounded-full cursor-pointer bg-black-digiliario hover:bg-gray-700"
               onClick={goToNext}
             >
               <ArrowRightRounded className="text-white" />
@@ -61,7 +51,7 @@ function ImageSlider({
           )}
         </div>
         <div
-          className="bg-cover bg-center w-full h-[220px] xl:w-[345px] xl:h-[170px]"
+          className="bg-cover bg-center w-full h-[340px] xl:w-[345px] xl:h-[170px]"
           onClick={() => handleDetail(slug)}
           style={{
             backgroundImage: imagenes?.[currentIndex]?.url

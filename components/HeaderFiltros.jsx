@@ -240,78 +240,35 @@ function HeaderFiltros() {
           {/* Menu mobile */}
 
           <Disclosure.Panel className="absolute w-full sm:hidden ">
-            <div className="px-2 pt-4 pb-8 space-y-1 bg-black-digiliario ">
-              <Disclosure.Button className="content-center m-auto mt-4 mb-4 text-center">
-                <Link href="login">
-                  <a
-                    key="login"
-                    className="bg-red-digiliario hover:bg-red-600 text-white font-gilmerMedium ml-3 px-3 py-2.5 rounded-md text-sm  "
-                  >
-                    Iniciar Sesión{" "}
-                  </a>
-                </Link>
-              </Disclosure.Button>
-
-              <a className="block px-3 py-2 pt-4 text-sm text-white bg-gray-700 rounded-md hover:text-white font-gilmerMedium">
-                Bienvenido
-                <div className="flex items-center pt-2 pb-6 ">
-                  <div className="flex items-center pr-4">
-                    <label className="border-2 border-white rounded-full shadow-md btn btn-ghost btn-circle avatar">
-                      <div className="w-20 rounded-full">
-                        <UserCircleIcon className="w-7 text-red-digiliario " />
-                      </div>
-                    </label>
-                  </div>
-                  <div className="flex flex-col ">
-                    <span className="text-lg font-gilmerBold">
-                      Usuario invitado
-                    </span>
-                    <span className="text-sm"> demo@digiliario.com</span>
-                  </div>
-                </div>
-              </a>
+            <div className="px-2 pb-8 space-y-1 border-t-2 bg-gray-50 ">
               <div className="pt-2"></div>
-              {navigationMobile.map((item) => (
-                <Disclosure.Button
-                  key={item.name}
-                  as="a"
-                  href={item.href}
-                  className={classNames(
-                    item.current
-                      ? " bg-red-digiliario text-white"
-                      : " text-white hover:bg-gray-700 hover:text-white",
-                    "block px-3 py-2 rounded-md  text-sm font-gilmerMedium"
+              {mainMenu.map(({ title, icon, url, item }, index) => (
+                <div key={index}>
+                  {item == "logout" ? (
+                    <a
+                      href="#"
+                      className={classNames(
+                        "flex items-center px-4 py-2 text-md text-black-digiliario font-gilmerMedium"
+                      )}
+                    >
+                      {icon}
+                      {title}
+                    </a>
+                  ) : (
+                    <Link href={url}>
+                      <a
+                        href={url}
+                        className={classNames(
+                          "flex items-center px-4 py-2 text-md text-black-digiliario font-gilmerBold hover:text-red-digiliario"
+                        )}
+                      >
+                        {icon}
+                        {title}
+                      </a>
+                    </Link>
                   )}
-                  aria-current={item.current ? "page" : undefined}
-                >
-                  <div className="flex items-center gap-2">
-                    <HomeIcon className="w-6 text-white" />
-                    {item.name}
-                  </div>
-                </Disclosure.Button>
+                </div>
               ))}
-              <div className="pt-4"></div>
-              <Disclosure.Button className="content-center m-auto text-center">
-                <Link href="planes">
-                  <a
-                    key="planes"
-                    className="bg-red-digiliario hover:bg-red-600 text-white font-gilmerMedium ml-3 px-3 py-2.5 rounded-md text-sm  "
-                  >
-                    Planes de Suscripción{" "}
-                  </a>
-                </Link>
-              </Disclosure.Button>
-              <div className="pt-4"></div>
-              <Disclosure.Button className="content-center m-auto text-center">
-                <Link href="planes">
-                  <a
-                    key="planes"
-                    className="bg-red-digiliario hover:bg-red-600 text-white font-gilmerMedium ml-3 px-3 py-2.5 rounded-md text-sm  "
-                  >
-                    Publicar Inmueble{" "}
-                  </a>
-                </Link>
-              </Disclosure.Button>
             </div>
           </Disclosure.Panel>
           {/* End Menu mobile */}

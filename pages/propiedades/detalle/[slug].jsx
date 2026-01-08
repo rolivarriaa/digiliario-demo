@@ -115,12 +115,12 @@ function propiedad() {
       <div>
         <HeaderFiltros />
         {/* <HeaderBroker /> */}
-        <div className="max-w-screen-2xl m-auto h-auto sm:mb-20">
+        <div className="h-auto m-auto max-w-screen-2xl sm:mb-20">
           <div className="hidden md:flex md:gap-2 md:pb-4 md:items-center md:mt-6">
             <Link href={`/propiedades`}>
               <a href={`/propiedades`}>
                 <div className="flex items-center gap-1 mr-2">
-                  <FaArrowLeft className="text-red-digiliario mr-2 items-center" />
+                  <FaArrowLeft className="items-center mr-2 text-red-digiliario" />
                   <p className="text-sm font-gilmerBold text-red-digiliario">
                     Regresar
                   </p>
@@ -129,7 +129,7 @@ function propiedad() {
             </Link>
             <div className="flex ">
               <div>
-                <p className="text-sm font-gilmerBold underline">
+                <p className="text-sm underline font-gilmerBold">
                   {selectedInmuebleDetalle?.operacion}
                 </p>
               </div>
@@ -138,8 +138,8 @@ function propiedad() {
               </div>
 
               <div className="w-auto md:w-[625px] ">
-                <p className="text-sm font-gilmerBold truncate ">
-                  {selectedInmuebleDetalle?.titulo}{" "}
+                <p className="text-sm truncate font-gilmerBold ">
+                  {selectedInmuebleDetalle?.titulo}
                 </p>
               </div>
             </div>
@@ -147,45 +147,45 @@ function propiedad() {
           <div className="hidden md:block md:relative  md:h-[250px] lg:rounded-md lg:h-auto lg:bg-cover lg:bg-center bg-cover">
             <div className="grid grid-cols-3 justify-between gap-4 h-[416px] ">
               <div className="absolute w-full h-[416px] justify-between">
-                <div className=" h-full flex flex-col justify-between  ">
+                <div className="flex flex-col justify-between h-full ">
                   <div className="flex flex-row justify-between">
                     <div className="flex justify-end p-4">
-                      <div className="flex items-center gap-2 bg-white rounded-lg p-2 shadow-md hover:text-red-digiliario cursor-pointe md:px-2 md:py-2 ">
-                        <span className="text-black-digiliario text-xs md:text-sm font-gilmerHeavy uppercase">
+                      <div className="flex items-center gap-2 p-2 bg-white rounded-lg shadow-md hover:text-red-digiliario cursor-pointe md:px-2 md:py-2 ">
+                        <span className="text-xs uppercase text-black-digiliario md:text-sm font-gilmerHeavy">
                           {selectedInmuebleDetalle?.operacion}
                         </span>
                       </div>
                     </div>
-                    <div className="flex justify-end p-4 cursor-pointer gap-4 ">
+                    <div className="flex justify-end gap-4 p-4 cursor-pointer ">
                       <div
-                        className="flex items-center p-2 gap-2 bg-white rounded-lg"
+                        className="flex items-center gap-2 p-2 bg-white rounded-lg"
                         onClick={onOpen}
                       >
                         <MdGridOn
                           size={15}
                           className="text-black-digiliario "
                         />
-                        <span className="text-black-digiliario text-2xs md:text-sm font-gilmerBold  hover:text-red-digiliario">
+                        <span className="text-black-digiliario text-2xs md:text-sm font-gilmerBold hover:text-red-digiliario">
                           todas las fotos
                         </span>
                       </div>
                       <div
-                        className="flex items-center p-2 gap-2 bg-white rounded-lg"
+                        className="flex items-center gap-2 p-2 bg-white rounded-lg"
                         onClick={onOpen}
                       >
                         <FaImages
                           size={15}
                           className="text-black-digiliario "
                         />
-                        <span className="text-black-digiliario text-xs md:text-sm font-gilmerBold hover:text-red-digiliario">
+                        <span className="text-xs text-black-digiliario md:text-sm font-gilmerBold hover:text-red-digiliario">
                           {selectedInmuebleDetalle?.total_imagenes}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex justify-end p-4 gap-4">
-                    <div className="flex items-center gap-2 bg-white rounded-lg p-2 shadow-md hover:text-red-digiliario cursor-pointer">
+                  <div className="flex justify-end gap-4 p-4">
+                    <div className="flex items-center gap-2 p-2 bg-white rounded-lg shadow-md cursor-pointer hover:text-red-digiliario">
                       <FiHeart size={15} className="text-black-digiliario " />
                       <span className="text-sm font-gilmerBold">Guardar</span>
                     </div>
@@ -217,7 +217,7 @@ function propiedad() {
                     : " col-span-1 h-[400px] "
                 }`}
               >
-                <div className="flex flex-col gap-4 justify-between ">
+                <div className="flex flex-col justify-between gap-4 ">
                   {selectedInmuebleDetalle?.imagenes?.map(
                     (imagen, i) =>
                       i < 3 &&
@@ -244,45 +244,19 @@ function propiedad() {
               tipoCambio={selectedInmuebleDetalle?.tipo_cambio_short}
             />
 
-            <div className="relative flex items-center">
-              <div className="absolute top-2 left-2 bg-white rounded-md px-2 py-1 ">
-                <p className="font-gilmerHeavy text-red-digiliario uppercase">
+            <div className="flex items-center ">
+              <div className="absolute px-2 py-1 bg-white rounded-md top-2 left-2 ">
+                <p className="uppercase font-gilmerHeavy text-red-digiliario">
                   {selectedInmuebleDetalle?.operacion}
                 </p>
               </div>
-              <div className="absolute top-2 right-2 bg-white rounded-md px-2 py-1 ">
-                <div className="flex gap-1">
-                  <p className="font-gilmerHeavy text-red-digiliario  text-right">
-                    {format(selectedInmuebleDetalle?.precio, {
-                      currency: "$",
-                      spacing: false,
-                      currencyPosition: "LEFT",
-                      decimalsDigits: 0,
-                      decimalSeparator: " ",
-                    })}
-                  </p>
 
-                  <p className="font-gilmerHeavy text-red-digiliario ">
-                    {selectedInmuebleDetalle?.tipo_cambio_short}
-                  </p>
-                </div>
-              </div>
-
-              <div className="absolute bottom-2 right-2 bg-white rounded-md px-2 py-1 flex items-center gap-2">
+              <div className="absolute flex items-center gap-2 px-2 py-1 bg-white rounded-md bottom-2 right-2">
                 <FaImages size={15} className="text-black-digiliario " />
-                <span className="text-black-digiliario text-sm md:text-sm font-gilmerBold hover:text-red-digiliario">
+                <span className="text-sm text-black-digiliario md:text-sm font-gilmerBold hover:text-red-digiliario">
                   {selectedInmuebleDetalle?.total_imagenes}
                 </span>
               </div>
-
-              <div
-                className="bg-cover bg-center w-full h-[220px] xl:w-[345px] xl:h-[170px]  "
-                // onClick={() => handleDetail(slug)}
-                onClick={() => modalDetalleMobile.onOpen()}
-                style={{
-                  backgroundImage: `url(${imagenPrincipal?.url})`,
-                }}
-              ></div>
             </div>
           </div>
 
@@ -293,21 +267,34 @@ function propiedad() {
           <div>
             {/* Top Descripcion */}
             <div className="w-full px-2 lg:px-0 ">
-              <div className="flex items-center justify-between lg:pt-2 lg:pb-2">
-                <p className="hidden md:block text-xs font-gilmerBold pt-2 text-gray-600">
+              <div className="flex items-center justify-between pt-2 lg:pt-2 lg:pb-2">
+                <p className="text-sm text-gray-600 md:block font-gilmerBold">
                   #{selectedInmuebleDetalle?.inmueble_codigo}
                 </p>
-                <div></div>
+                <div className="flex gap-2 md:hidden">
+                  <p className="text-xl text-right font-gilmerHeavy text-red-digiliario">
+                    {format(selectedInmuebleDetalle?.precio, {
+                      currency: "$",
+                      spacing: false,
+                      currencyPosition: "LEFT",
+                      decimalsDigits: 0,
+                      decimalSeparator: " ",
+                    })}
+                  </p>
+                  <span className="text-xl text-right font-gilmerHeavy text-red-digiliario">
+                    {selectedInmuebleDetalle?.tipo_cambio_short}
+                  </span>
+                </div>
               </div>
 
               {/* Desktop */}
-              <div className="md:flex items-center justify-between hidden">
+              <div className="items-center justify-between hidden md:flex">
                 <div>
-                  <h1 className="text-xl font-gilmerBold">
+                  <h1 className="text-2xl font-gilmerBold">
                     {selectedInmuebleDetalle?.titulo}
                   </h1>
 
-                  <p className="  font-gilmerBold  text-red-digiliario py-2  rounded-md text-md font-medium flex items-center gap-2">
+                  <p className="flex items-center gap-2 py-2 font-medium rounded-md font-gilmerBold text-red-digiliario text-md">
                     {selectedInmuebleDetalle?.tipo}
                   </p>
                 </div>
@@ -315,7 +302,7 @@ function propiedad() {
                 <div>
                   <div className="flex flex-col justify-end">
                     <div className="flex gap-2">
-                      <p className="font-gilmerHeavy text-2xl text-red-digiliario  text-right">
+                      <p className="text-2xl text-right font-gilmerHeavy text-red-digiliario">
                         {format(selectedInmuebleDetalle?.precio, {
                           currency: "$",
                           spacing: false,
@@ -324,7 +311,7 @@ function propiedad() {
                           decimalSeparator: " ",
                         })}
                       </p>
-                      <span className="font-gilmerHeavy text-2xl text-red-digiliario  text-right">
+                      <span className="text-2xl text-right font-gilmerHeavy text-red-digiliario">
                         {selectedInmuebleDetalle?.tipo_cambio_short}
                       </span>
                     </div>
@@ -332,7 +319,7 @@ function propiedad() {
                     <Link href="/#">
                       <a
                         target="_blank"
-                        className="text-sm font-gilmerBold text-gray text-right cursor-pointer lg:pt-2 lg:font-gilmerBold hover:text-red-digiliario"
+                        className="text-sm text-right cursor-pointer font-gilmerBold text-gray lg:pt-2 lg:font-gilmerBold hover:text-red-digiliario"
                       >
                         Solicitar Precalificación
                       </a>
@@ -344,29 +331,21 @@ function propiedad() {
 
               {/* Mobile */}
               <div className="md:hidden ">
-                <div className="flex flex-wrap mt-2 pt-2">
-                  <h1 className="text-lg font-gilmerBold">
+                <div className="flex flex-wrap pt-2 mt-2">
+                  <h1 className="text-xl font-gilmerBold">
                     {selectedInmuebleDetalle?.titulo}
                   </h1>
                 </div>
-                <p className="  font-gilmerBold  text-red-digiliario pb-2  rounded-md text-md  flex items-center gap-2">
+                <p className="flex items-center gap-2 pb-2 rounded-md font-gilmerBold text-red-digiliario text-md">
                   {selectedInmuebleDetalle?.tipo}
                 </p>
-
-                <div className="flex items-center justify-between ">
-                  <div className="hidden   flex-col justify-end">
-                    <span className="text-sm md:text-base font-gilmerMedium text-gray text-right cursor-pointer lg:pt-2 lg:font-gilmerBold hover:text-red-digiliario">
-                      Solicitar Precalificación
-                    </span>
-                  </div>
-                </div>
               </div>
 
-              <hr className="border w-full my-4 border-gray-100 " />
+              <hr className="w-full mt-2 mb-2 border border-gray-100 " />
 
               <div className="flex flex-col w-full md:flex-row">
                 {/* Columna de contenido */}
-                <main className="w-full  md:pr-6">
+                <main className="w-full md:pr-6">
                   <div className="flex items-center justify-between">
                     <div
                       className={`flex flex-wrap items-center gap-2 ${
@@ -440,25 +419,25 @@ function propiedad() {
                     />
                   </div>
 
-                  <div className="md:grid md:grid-cols-2 md:bg-gray-50 items-center px-2 rounded-md my-4 sm:mb-10 lg:mb-0">
+                  <div className="items-center px-2 my-4 rounded-md md:grid md:grid-cols-2 md:bg-gray-50 sm:mb-10 lg:mb-0">
                     <div>
-                      <div className="md:flex  md:items-start gap-2 items-center justify-center md:justify-start py-2 md:ml-4">
+                      <div className="items-center justify-center gap-2 py-2 md:flex md:items-start md:justify-start md:ml-4">
                         <div className="pb-2 ">
-                          <p className="font-gilmerBold text-center  text-red-digiliario">
+                          <p className="text-center font-gilmerBold text-red-digiliario">
                             {selectedInmuebleDetalle?.nombre}{" "}
                             {selectedInmuebleDetalle?.apellidos}
                           </p>
-                          <p className="text-xs md:text-left text-center font-gilmerMedium">
+                          <p className="text-xs text-center md:text-left font-gilmerMedium">
                             Agente Inmobiliario
                           </p>
                         </div>
                       </div>
                     </div>
 
-                    <div className="text-right flex md:justify-end justify-center cursor-pointer">
+                    <div className="flex justify-center text-right cursor-pointer md:justify-end">
                       <Link href="/propiedades">
                         <a className="flex text-white items-center text-sm bg-red-digiliario hover:bg-red-500 rounded-lg  px-10 py-2.5 text-center ">
-                          <HomeIcon className="h-4 w-4 text-white mr-2 text-right " />
+                          <HomeIcon className="w-4 h-4 mr-2 text-right text-white " />
                           <p className="font-gilmerBold">Ver inventario</p>
                         </a>
                       </Link>
@@ -504,12 +483,12 @@ function propiedad() {
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton />
-          <ModalBody className="overflow-x-auto w-full">
+          <ModalBody className="w-full overflow-x-auto">
             <div>
-              <div className="flex gap-2 pb-4 items-center mt-6">
+              <div className="flex items-center gap-2 pb-4 mt-6">
                 <div className="flex ">
                   <div>
-                    <p className="text-md font-gilmerBold underline text-red-digiliario">
+                    <p className="underline text-md font-gilmerBold text-red-digiliario">
                       {selectedInmuebleDetalle?.operacion}
                     </p>
                   </div>
@@ -518,7 +497,7 @@ function propiedad() {
                   </div>
 
                   <div className="w-[625px]">
-                    <p className="text-md font-gilmerBold truncate ">
+                    <p className="truncate text-md font-gilmerBold ">
                       {selectedInmuebleDetalle?.titulo}
                     </p>
                   </div>
@@ -527,7 +506,7 @@ function propiedad() {
             </div>
             <div className="w-full">
               <div className="grid grid-cols-5">
-                <div className="flex flex-col gap-4 h-auto s mb-4 col-span-3">
+                <div className="flex flex-col h-auto col-span-3 gap-4 mb-4 s">
                   <div className="h-[580px] overflow-auto">
                     {selectedInmuebleDetalle?.imagenes?.map((imagen, i) => (
                       <div
@@ -544,7 +523,7 @@ function propiedad() {
                         : "hidden"
                     } pt-4`}
                   >
-                    <h2 className="text-lg font-gilmerBold text-red-digiliario pb-2 ">
+                    <h2 className="pb-2 text-lg font-gilmerBold text-red-digiliario ">
                       Ubicación
                     </h2>
                   </div>
@@ -568,7 +547,7 @@ function propiedad() {
             <div>
               <div>
                 <div className="flex w-full">
-                  <p className="font-gilmerBold text-sm pb-2 ">
+                  <p className="pb-2 text-sm font-gilmerBold ">
                     Imágenes ({selectedInmuebleDetalle?.total_imagenes})
                   </p>
                 </div>
@@ -590,9 +569,9 @@ function propiedad() {
         <ModalOverlay />
         <ModalContent>
           <ModalCloseButton className="bg-white shadow-md text-red-digiliario" />
-          <ModalBody className="m-0 p-0">
-            <div className="flex flex-col gap-2 h-auto pt-2 mb-4 ">
-              <h2 className="text-lg font-gilmerBold text-red-digiliario px-4 ">
+          <ModalBody className="p-0 m-0">
+            <div className="flex flex-col h-auto gap-2 pt-2 mb-4 ">
+              <h2 className="px-4 text-lg font-gilmerBold text-red-digiliario ">
                 Imágenes ({selectedInmuebleDetalle?.total_imagenes})
               </h2>
               <div className="h-auto overflow-auto">
@@ -604,8 +583,8 @@ function propiedad() {
                   ></div>
                 ))}
               </div>
-              <div className="pt-4  ">
-                <h2 className="text-lg font-gilmerBold text-red-digiliario pb-2 px-4">
+              <div className="pt-4 ">
+                <h2 className="px-4 pb-2 text-lg font-gilmerBold text-red-digiliario">
                   Ubicación
                 </h2>
               </div>

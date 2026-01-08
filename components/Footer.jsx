@@ -6,54 +6,54 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="mt-20 mb-10">
+    <div className="mt-10 mb-10 md:mt-20">
       {/* <hr className="h-2 m-auto mt-32 mb-2"></hr> */}
-      <footer className=" text-center  items-center ">
+      <footer className="items-center text-center ">
         <div className="items-center h-10 cursor-pointer ">
           <Image src="/digiliario-footer.png" width={90} height={21} />
         </div>
         {/*  center contenet menu */}
-        <div className="block md:flex lg:flex text-center align-middle m-auto justify-center gap-5 ">
-          <p className="cursor-pointer  p-2 text-digiblackprimary ">
+        <div className="justify-center block gap-4 m-auto text-center align-middle md:flex lg:flex ">
+          <p className="cursor-pointer md:pb-2 text-digiblackprimary">
             <Link href="/privacidad">
               <a
                 target="_blank"
-                className="hover:text-red-digiliario text-xs font-gilmerMedium"
+                className="text-xs hover:text-red-digiliario font-gilmerMedium"
               >
                 Politica de privacidad
               </a>
             </Link>
           </p>
-          <p className="cursor-pointer p-2 text-digiblackprimary">
+          <p className="cursor-pointer md:pb-2 text-digiblackprimary">
             <Link href="/terminos">
               <a
                 target="_blank"
-                className="hover:text-red-digiliario text-xs font-gilmerMedium "
+                className="text-xs hover:text-red-digiliario font-gilmerMedium "
               >
                 Términos y condiciones
               </a>
             </Link>
           </p>
-          {/* <p className="cursor-pointer  p-2  ">
+          {/* <p className="p-2 cursor-pointer ">
             <Link href="/contacto">
               <a
                 target="_blank"
-                className="hover:text-red-digiliario text-xs font-gilmerMedium "
+                className="text-xs hover:text-red-digiliario font-gilmerMedium "
               >
                 Información
               </a>
             </Link>
           </p> */}
-          {/* <p className="cursor-pointer p-2  ">
+          {/* <p className="p-2 cursor-pointer ">
             <Link href="#">
-              <a className="hover:text-red-digiliario text-xs font-gilmerMedium ">
+              <a className="text-xs hover:text-red-digiliario font-gilmerMedium ">
                 Soporte
               </a>
             </Link>
           </p> */}
-          <p className="cursor-pointer  p-2  ">
+          <p className="cursor-pointer md:p-2 ">
             <Link href="/contacto">
-              <a className="hover:text-red-digiliario text-xs font-gilmerMedium ">
+              <a className="text-xs hover:text-red-digiliario font-gilmerMedium ">
                 Contacto
               </a>
             </Link>
@@ -61,15 +61,15 @@ function Footer() {
         </div>
         {/* Termina links  */}
         {/* redes sociales */}
-        <div className="items-center mt-4 h-10 ">
-          <span className="p-4 text-black-digiliario  hover:text-red-digiliario">
+        <div className="items-center h-10 mt-4 ">
+          <span className="p-4 text-black-digiliario hover:text-red-digiliario">
             <Link href="https://facebook.com/digiliario">
               <a target="_blank">
                 <Facebook />
               </a>
             </Link>
           </span>
-          <span className="p-4 text-black-digiliario  hover:text-red-digiliario">
+          <span className="p-4 text-black-digiliario hover:text-red-digiliario">
             <Link href="https://instagram.com/digiliario">
               <a target="_blank">
                 <Instagram />
@@ -86,7 +86,7 @@ function Footer() {
         </div>
         {/* termina redes sociales */}
         <div className="items-center mt-2">
-          <p className="text-xs">
+          <p className="text-xs font-gilmerBold">
             Digiliario © {new Date().getFullYear()} - Todos los derechos
             reservados.
           </p>
